@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landscript | Landscape + Script</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* [변수 설정] 테마 컬러 */
+        :root {
+            --main-orange: #ff5500; /* 힙한 오렌지 */
+            --text-black: #111;
+            --bg-white: #fff;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-white);
+            color: var(--text-black);
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        a:hover { color: var(--main-orange); }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* 1. 네비게이션 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .logo { 
+            font-size: 1.4rem; 
+            font-weight: 900; 
+            letter-spacing: -1px; 
+            position: relative;
+        }
+        /* 로고 옆 작은 점 포인트 */
+        .logo::after {
+            content: '';
+            display: inline-block;
+            width: 8px; height: 8px;
+            background: var(--main-orange);
+            border-radius: 50%;
+            margin-left: 4px;
+        }
+
+        /* 2. 메인 히어로 섹션 */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 60px 0 120px;
+            position: relative;
+        }
+
+        .hero-text {
+            flex: 1.2;
+            min-width: 300px;
+            z-index: 2; /* 이미지보다 위에 오도록 */
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--main-orange);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            line-height: 0.95;
+            font-weight: 900;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #444;
+            max-width: 450px;
+            border-left: 3px solid var(--text-black);
+            padding-left: 20px;
+            margin-top: 30px;
+        }
+
+        .hero-image-area {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            text-align: right;
+        }
+
+        /* 메인 소나무 이미지 스타일 */
+        .main-pine-tree {
+            max-width: 120%; /* 이미지를 좀 더 크게 */
+            height: auto;
+            transform: translateX(10%); /* 오른쪽으로 살짝 뺌 */
+            filter: contrast(1.1); /* 선명하게 */
+        }
+
+        /* 배경 낙서 효과 (CSS로 구현) */
+        .scribble-orange {
+            position: absolute;
+            top: -10%; right: 10%;
+            width: 250px; height: 250px;
+            border: 6px solid var(--main-orange);
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            transform: rotate(-10deg);
+            z-index: -1;
+            opacity: 0.8;
+        }
+        .scribble-orange::before {
+            content: '';
+            position: absolute;
+            top: 20px; left: 20px;
+            width: 100%; height: 100%;
+            border: 3px solid var(--main-orange);
+            border-radius: 50%;
+            transform: rotate(20deg);
+        }
+
+        /* 3. 팀 섹션 */
+        .team-section {
+            padding: 100px 0;
+            border-top: 2px solid #000;
+            position: relative;
+        }
+
+        /* 거대한 2025 */
+        .big-year {
+            font-size: 15vw; /* 화면 너비에 비례 */
+            font-weight: 900;
+            line-height: 0.8;
+            letter-spacing: -10px;
+            color: var(--text-black);
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .year-label {
+            font-size: 1.2rem;
+            color: var(--main-orange);
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* 멤버 리스트 레이아웃 */
+        .member-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 100px;
+        }
+
+        .member {
+            display: flex;
+            align-items: flex-start;
+            gap: 50px;
+        }
+
+        .member-content {
+            flex: 1;
+            padding-top: 20px;
+        }
+
+        .member-role {
+            font-size: 1.1rem;
+            color: var(--main-orange);
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .member-name {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+        
+        .member-name span {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-top: 5px;
+            color: #666;
+        }
+
+        .member-desc {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+            max-width: 400px;
+        }
+
+        .joint-work {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            background: #eee;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        /* [요청하신] 낙서 같은 멤버 이미지 플레이스홀더 */
+        .scribble-avatar {
+            width: 300px;
+            height: 350px;
+            background: #f4f4f4;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #000;
+        }
+
+        /* 낙서 아트워크 생성 (순수 CSS) */
+        .art-line {
+            position: absolute;
+            border: 3px solid var(--text-black);
+            border-radius: 50%;
+        }
+        
+        /* 김도현용 낙서 패턴 (데이터 분석 느낌) */
+        .art-kim .art-line:nth-child(1) { top: 20%; left: 10%; width: 50%; height: 50%; border-color: var(--main-orange); }
+        .art-kim .art-line:nth-child(2) { top: 40%; left: 40%; width: 70%; height: 70%; border-radius: 0; transform: rotate(15deg); }
+        .art-kim::after { content: 'R'; position: absolute; bottom: 20px; right: 20px; font-size: 8rem; font-weight:900; opacity: 0.1; }
+
+        /* 이재빈용 낙서 패턴 (지형/등고선 느낌) */
+        .art-lee .art-line:nth-child(1) { top: 10%; left: -10%; width: 120%; height: 80%; border-radius: 40% 60% 70% 30%; border-color: var(--main-orange); }
+        .art-lee .art-line:nth-child(2) { top: 30%; left: 10%; width: 100%; height: 60%; border-radius: 60% 40% 30% 70%; }
+        .art-lee::after { content: 'GIS'; position: absolute; bottom: 20px; right: 20px; font-size: 6rem; font-weight:900; opacity: 0.1; }
+
+
+        footer {
+            margin-top: 100px;
+            padding: 60px 0;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        /* 모바일 최적화 */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem; }
+            .member { flex-direction: column-reverse; }
+            .scribble-avatar { width: 100%; height: 300px; }
+            .main-pine-tree { transform: translateX(0); max-width: 100%; margin-top: 40px; }
+            .hero-image-area { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <div class="logo">LANDSCRIPT</div>
+            <div>
+                <a href="#">About</a>
+                <span style="margin: 0 10px; color:#ddd;">/</span>
+                <a href="#">Portfolio</a>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-text">
+                <div class="hero-subtitle">Korea National Univ. of Cultural Heritage</div>
+                <div class="hero-title">
+                    LANDSCAPE<br>
+                    WRITTEN IN<br>
+                    <span style="color:var(--main-orange)">CODE.</span>
+                </div>
+                <div class="hero-desc">
+                    <b>전통조경학과 21학번 팀 랜드스크립트.</b><br>
+                    우리는 땅을 읽고(Read), 코드로 다시 씁니다(Script).<br>
+                    전통 조경 공간을 데이터 분석과 GIS 기술로 새롭게 해석합니다.
+                </div>
+            </div>
+
+            <div class="hero-image-area">
+                <div class="scribble-orange"></div>
+                <img src="pine-tree.png" alt="Traditional Pine Tree" class="main-pine-tree">
+            </div>
+        </section>
+
+        <section class="team-section">
+            <span class="year-label">ESTABLISHED</span>
+            <div class="big-year">2025</div>
+
+            <div class="member-list">
+                
+                <div class="member">
+                    <div class="member-content">
+                        <div class="member-role">R Specialist / Researcher</div>
+                        <div class="member-name">
+                            김도현
+                            <span>Kim Do-hyun</span>
+                        </div>
+                        <div class="member-desc">
+                            데이터 통계 분석 언어 R을 활용하여 전통 조경의 식재 패턴과 공간 데이터를 정량적으로 분석합니다.
+                        </div>
+                        <div class="joint-work">Joint Work: Surface Analysis & Research</div>
+                    </div>
+                    <div class="scribble-avatar art-kim">
+                        <div class="art-line"></div>
+                        <div class="art-line"></div>
+                    </div>
+                </div>
+
+                <div class="member">
+                    <div class="member-content">
+                        <div class="member-role">ArcGIS Specialist / Analyst</div>
+                        <div class="member-name">
+                            이재빈
+                            <span>Lee Jae-been</span>
+                        </div>
+                        <div class="member-desc">
+                            지리정보시스템(ArcGIS)을 활용하여 대상지의 지형, 수계, 시각적 노출도를 분석하고 매핑합니다.
+                        </div>
+                        <div class="joint-work">Joint Work: Surface Analysis & Research</div>
+                    </div>
+                    <div class="scribble-avatar art-lee">
+                        <div class="art-line"></div>
+                        <div class="art-line"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            © 202
