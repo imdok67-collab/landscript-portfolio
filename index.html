@@ -9,9 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* [변수 설정] 테마 컬러 */
+        /* [변수 설정] */
         :root {
-            --main-orange: #ff5500; /* 힙한 오렌지 */
+            --main-orange: #ff5500;
             --text-black: #111;
             --bg-white: #fff;
         }
@@ -29,244 +29,138 @@
         a:hover { color: var(--main-orange); }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
+            max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative;
         }
 
-        /* 1. 네비게이션 */
+        /* 네비게이션 */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 40px 0;
-            font-size: 0.9rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 40px 0; font-size: 0.9rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px;
         }
-        
-        .logo { 
-            font-size: 1.4rem; 
-            font-weight: 900; 
-            letter-spacing: -1px; 
-            position: relative;
-        }
-        /* 로고 옆 작은 점 포인트 */
+        .logo { font-size: 1.4rem; font-weight: 900; letter-spacing: -1px; }
         .logo::after {
-            content: '';
-            display: inline-block;
-            width: 8px; height: 8px;
-            background: var(--main-orange);
-            border-radius: 50%;
-            margin-left: 4px;
+            content: ''; display: inline-block; width: 8px; height: 8px;
+            background: var(--main-orange); border-radius: 50%; margin-left: 4px;
         }
 
-        /* 2. 메인 히어로 섹션 */
+        /* 히어로 섹션 */
         .hero {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            padding: 60px 0 120px;
-            position: relative;
+            display: flex; flex-wrap: wrap; align-items: center;
+            padding: 60px 0 120px; position: relative;
         }
-
-        .hero-text {
-            flex: 1.2;
-            min-width: 300px;
-            z-index: 2; /* 이미지보다 위에 오도록 */
-        }
-
+        .hero-text { flex: 1.2; min-width: 300px; z-index: 2; }
         .hero-subtitle {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--main-orange);
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            font-size: 1rem; font-weight: 700; color: var(--main-orange);
+            margin-bottom: 20px; text-transform: uppercase;
         }
-
         .hero-title {
-            font-size: 4.5rem;
-            line-height: 0.95;
-            font-weight: 900;
-            margin-bottom: 30px;
-            letter-spacing: -2px;
+            font-size: 4.5rem; line-height: 0.95; font-weight: 900;
+            margin-bottom: 30px; letter-spacing: -2px;
         }
-
         .hero-desc {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #444;
-            max-width: 450px;
-            border-left: 3px solid var(--text-black);
-            padding-left: 20px;
-            margin-top: 30px;
+            font-size: 1.1rem; line-height: 1.7; color: #444; max-width: 450px;
+            border-left: 3px solid var(--text-black); padding-left: 20px; margin-top: 30px;
         }
-
-        .hero-image-area {
-            flex: 1;
-            min-width: 300px;
-            position: relative;
-            text-align: right;
-        }
-
-        /* 메인 소나무 이미지 스타일 */
-        .main-pine-tree {
-            max-width: 120%; /* 이미지를 좀 더 크게 */
-            height: auto;
-            transform: translateX(10%); /* 오른쪽으로 살짝 뺌 */
-            filter: contrast(1.1); /* 선명하게 */
-        }
-
-        /* 배경 낙서 효과 (CSS로 구현) */
+        .hero-image-area { flex: 1; min-width: 300px; position: relative; text-align: right; }
+        .main-pine-tree { max-width: 120%; height: auto; transform: translateX(10%); filter: contrast(1.1); }
         .scribble-orange {
-            position: absolute;
-            top: -10%; right: 10%;
-            width: 250px; height: 250px;
+            position: absolute; top: -10%; right: 10%; width: 250px; height: 250px;
             border: 6px solid var(--main-orange);
             border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            transform: rotate(-10deg);
-            z-index: -1;
-            opacity: 0.8;
-        }
-        .scribble-orange::before {
-            content: '';
-            position: absolute;
-            top: 20px; left: 20px;
-            width: 100%; height: 100%;
-            border: 3px solid var(--main-orange);
-            border-radius: 50%;
-            transform: rotate(20deg);
+            transform: rotate(-10deg); z-index: -1; opacity: 0.8;
         }
 
-        /* 3. 팀 섹션 */
-        .team-section {
-            padding: 100px 0;
-            border-top: 2px solid #000;
-            position: relative;
-        }
-
-        /* 거대한 2025 */
+        /* 팀 섹션 */
+        .team-section { padding: 100px 0; border-top: 2px solid #000; }
         .big-year {
-            font-size: 15vw; /* 화면 너비에 비례 */
-            font-weight: 900;
-            line-height: 0.8;
-            letter-spacing: -10px;
-            color: var(--text-black);
-            margin-bottom: 80px;
-            position: relative;
-            z-index: 1;
+            font-size: 15vw; font-weight: 900; line-height: 0.8; letter-spacing: -10px;
+            color: var(--text-black); margin-bottom: 80px;
         }
-        
         .year-label {
-            font-size: 1.2rem;
-            color: var(--main-orange);
-            font-weight: 700;
-            letter-spacing: 2px;
-            display: block;
-            margin-bottom: 10px;
+            font-size: 1.2rem; color: var(--main-orange); font-weight: 700;
+            letter-spacing: 2px; display: block; margin-bottom: 10px;
         }
-
-        /* 멤버 리스트 레이아웃 */
-        .member-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 100px;
-        }
-
-        .member {
-            display: flex;
-            align-items: flex-start;
-            gap: 50px;
-        }
-
-        .member-content {
-            flex: 1;
-            padding-top: 20px;
-        }
-
-        .member-role {
-            font-size: 1.1rem;
-            color: var(--main-orange);
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        .member-name {
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1;
-        }
+        .member-list { display: grid; grid-template-columns: 1fr; gap: 100px; }
+        .member { display: flex; align-items: flex-start; gap: 50px; }
+        .member-content { flex: 1; padding-top: 20px; }
+        .member-role { font-size: 1.1rem; color: var(--main-orange); font-weight: 800; margin-bottom: 8px; }
+        .member-name { font-size: 2.8rem; font-weight: 700; margin-bottom: 20px; line-height: 1; }
+        .member-name span { display: block; font-size: 1.2rem; font-weight: 400; margin-top: 5px; color: #666; }
+        .member-desc { font-size: 1rem; line-height: 1.6; color: #333; max-width: 400px; }
+        .joint-work { margin-top: 20px; font-size: 0.9rem; font-weight: 700; background: #eee; display: inline-block; padding: 5px 10px; }
         
-        .member-name span {
-            display: block;
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin-top: 5px;
-            color: #666;
-        }
-
-        .member-desc {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #333;
-            max-width: 400px;
-        }
-
-        .joint-work {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            background: #eee;
-            display: inline-block;
-            padding: 5px 10px;
-        }
-
-        /* [요청하신] 낙서 같은 멤버 이미지 플레이스홀더 */
-        .scribble-avatar {
-            width: 300px;
-            height: 350px;
-            background: #f4f4f4;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid #000;
-        }
-
-        /* 낙서 아트워크 생성 (순수 CSS) */
-        .art-line {
-            position: absolute;
-            border: 3px solid var(--text-black);
-            border-radius: 50%;
-        }
-        
-        /* 김도현용 낙서 패턴 (데이터 분석 느낌) */
+        .scribble-avatar { width: 300px; height: 350px; background: #f4f4f4; position: relative; overflow: hidden; border: 2px solid #000; }
+        .art-line { position: absolute; border: 3px solid var(--text-black); border-radius: 50%; }
         .art-kim .art-line:nth-child(1) { top: 20%; left: 10%; width: 50%; height: 50%; border-color: var(--main-orange); }
         .art-kim .art-line:nth-child(2) { top: 40%; left: 40%; width: 70%; height: 70%; border-radius: 0; transform: rotate(15deg); }
         .art-kim::after { content: 'R'; position: absolute; bottom: 20px; right: 20px; font-size: 8rem; font-weight:900; opacity: 0.1; }
-
-        /* 이재빈용 낙서 패턴 (지형/등고선 느낌) */
         .art-lee .art-line:nth-child(1) { top: 10%; left: -10%; width: 120%; height: 80%; border-radius: 40% 60% 70% 30%; border-color: var(--main-orange); }
         .art-lee .art-line:nth-child(2) { top: 30%; left: 10%; width: 100%; height: 60%; border-radius: 60% 40% 30% 70%; }
         .art-lee::after { content: 'GIS'; position: absolute; bottom: 20px; right: 20px; font-size: 6rem; font-weight:900; opacity: 0.1; }
 
-
-        footer {
-            margin-top: 100px;
-            padding: 60px 0;
-            border-top: 1px solid #ddd;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #888;
+        /* [NEW] 단일 프로젝트 섹션 */
+        .project-section { padding: 100px 0; border-top: 2px solid #000; }
+        .section-title { font-size: 3rem; font-weight: 900; margin-bottom: 50px; text-transform: uppercase; }
+        
+        /* 가로형 카드 레이아웃 */
+        .featured-project {
+            display: flex;
+            border: 3px solid #000;
+            background: #fff;
+            box-shadow: 15px 15px 0px var(--main-orange);
+            min-height: 400px;
         }
+        
+        .project-img-box {
+            flex: 1.2;
+            border-right: 3px solid #000;
+            background-color: #ddd;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .project-img-box img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(100%); transition: 0.5s;
+        }
+        
+        /* 마우스 올리면 컬러로 변함 */
+        .featured-project:hover .project-img-box img { filter: grayscale(0%); transform: scale(1.05); }
 
-        /* 모바일 최적화 */
+        .project-info-box {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .p-tag { color: var(--main-orange); font-weight: 800; font-size: 0.9rem; margin-bottom: 10px; display: inline-block; }
+        .p-title { font-size: 2.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+        .p-desc { font-size: 1rem; line-height: 1.6; color: #555; margin-bottom: 30px; }
+        
+        /* 코드 버튼 스타일 */
+        .btn-group { display: flex; gap: 15px; }
+        
+        .btn-code {
+            padding: 15px 30px;
+            background: #000; color: #fff;
+            font-weight: 700; text-transform: uppercase;
+            border: 2px solid #000;
+            display: inline-flex; align-items: center; gap: 10px;
+        }
+        .btn-code:hover { background: #fff; color: #000; }
+        
+        .code-icon { font-family: monospace; font-weight: 400; opacity: 0.7; }
+
+        footer { margin-top: 100px; padding: 60px 0; border-top: 1px solid #ddd; text-align: center; font-size: 0.8rem; color: #888; }
+
         @media (max-width: 768px) {
             .hero-title { font-size: 3rem; }
             .member { flex-direction: column-reverse; }
-            .scribble-avatar { width: 100%; height: 300px; }
+            .featured-project { flex-direction: column; }
+            .project-img-box { border-right: none; border-bottom: 3px solid #000; height: 250px; }
             .main-pine-tree { transform: translateX(0); max-width: 100%; margin-top: 40px; }
             .hero-image-area { text-align: center; }
         }
@@ -280,7 +174,7 @@
             <div>
                 <a href="#">About</a>
                 <span style="margin: 0 10px; color:#ddd;">/</span>
-                <a href="#">Portfolio</a>
+                <a href="#">Projects</a>
             </div>
         </nav>
 
@@ -298,7 +192,6 @@
                     전통 조경 공간을 데이터 분석과 GIS 기술로 새롭게 해석합니다.
                 </div>
             </div>
-
             <div class="hero-image-area">
                 <div class="scribble-orange"></div>
                 <img src="pine-tree.png" alt="Traditional Pine Tree" class="main-pine-tree">
@@ -308,47 +201,69 @@
         <section class="team-section">
             <span class="year-label">ESTABLISHED</span>
             <div class="big-year">2025</div>
-
             <div class="member-list">
-                
                 <div class="member">
                     <div class="member-content">
                         <div class="member-role">R Specialist / Researcher</div>
-                        <div class="member-name">
-                            김도현
-                            <span>Kim Do-hyun</span>
-                        </div>
+                        <div class="member-name">김도현<span>Kim Do-hyun</span></div>
                         <div class="member-desc">
-                            데이터 통계 분석 언어 R을 활용하여 전통 조경의 식재 패턴과 공간 데이터를 정량적으로 분석합니다.
+                            데이터 통계 분석 언어 R을 활용하여 공간 데이터를 정량적으로 분석합니다.
                         </div>
                         <div class="joint-work">Joint Work: Surface Analysis & Research</div>
                     </div>
                     <div class="scribble-avatar art-kim">
-                        <div class="art-line"></div>
-                        <div class="art-line"></div>
+                        <div class="art-line"></div><div class="art-line"></div>
                     </div>
                 </div>
-
                 <div class="member">
                     <div class="member-content">
                         <div class="member-role">ArcGIS Specialist / Analyst</div>
-                        <div class="member-name">
-                            이재빈
-                            <span>Lee Jae-been</span>
-                        </div>
+                        <div class="member-name">이재빈<span>Lee Jae-been</span></div>
                         <div class="member-desc">
-                            지리정보시스템(ArcGIS)을 활용하여 대상지의 지형, 수계, 시각적 노출도를 분석하고 매핑합니다.
+                            지리정보시스템(ArcGIS)을 활용하여 사이트를 분석하고 매핑합니다.
                         </div>
                         <div class="joint-work">Joint Work: Surface Analysis & Research</div>
                     </div>
                     <div class="scribble-avatar art-lee">
-                        <div class="art-line"></div>
-                        <div class="art-line"></div>
+                        <div class="art-line"></div><div class="art-line"></div>
                     </div>
                 </div>
+            </div>
+        </section>
 
+        <section class="project-section">
+            <div class="section-title">Current Project</div>
+            
+            <div class="featured-project">
+                <div class="project-img-box">
+                    <img src="https://images.unsplash.com/photo-1473181488821-2d23949a045a?q=80&w=1000&auto=format&fit=crop" alt="Analysis Image">
+                </div>
+                
+                <div class="project-info-box">
+                    <div>
+                        <span class="p-tag">ACADEMIC RESEARCH 2025</span>
+                        <div class="p-title">경관지표가 PM10 농도에<br>미치는 영향 분석</div>
+                        <div class="p-desc">
+                            도시 조경 요소와 미세먼지 농도 간의 상관관계를 규명하는 연구입니다.
+                            R Studio를 활용하여 경관 패치 데이터를 처리하고, 회귀 분석 모델을 통해 주요 영향 인자를 도출했습니다.
+                        </div>
+                    </div>
+
+                    <div class="btn-group">
+                        <a href="analysis.R" class="btn-code" target="_blank">
+                            <span class="code-icon">&lt;/&gt;</span> View R Code
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
         <footer>
-            © 202
+            © 2025 Landscript. All rights reserved.<br>
+            Department of Traditional Landscape Architecture<br>
+            Korea National University of Cultural Heritage
+        </footer>
+    </div>
+
+</body>
+</html>
